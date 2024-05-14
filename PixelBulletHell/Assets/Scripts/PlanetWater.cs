@@ -12,6 +12,14 @@ public class PlanetWater : MonoBehaviour
     private float scalePercentage;
     [SerializeField] private GameObject planet;
     [SerializeField] private GameObject bulletTemplate;
+
+    [SerializeField] private GameObject core;
+    [SerializeField] private Material deadPlanetMat;
+
+    [SerializeField] private GameObject wavesObject;
+    [SerializeField] private GameObject explodeObject;
+    [SerializeField] private Animator expAnim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +49,7 @@ public class PlanetWater : MonoBehaviour
             if(transform.localScale.x <= 1.01)
             {
                 canDrink = false;
+                core.GetComponent<Renderer>().material = deadPlanetMat;
                 StartCoroutine(Explode());
             }
         }
@@ -61,6 +70,22 @@ public class PlanetWater : MonoBehaviour
         FindObjectOfType<PlanetCounter>().UpdateNumber();
         float numToFire = 6;
         yield return new WaitForSeconds(1f);
+
+        //explode anim
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        wavesObject.GetComponent<MeshRenderer>().enabled = false;
+        core.GetComponent<MeshRenderer>().enabled = false;
+        explodeObject.SetActive(true);
+        if(expAnim != null)
+        {
+            if(expAnim.HasState(0, Animator.StringToHash("Base Layer.ExplodeAnim")))
+            {
+                //core.SetActive(false);
+                expAnim.Play("Base Layer.ExplodeAnim");
+            }
+        }
+
+        //shoot bullets around
         for(int i = 0; i < numToFire; i++)
         {
             ShootBullet(Quaternion.Euler(0, 0, (0 * 120 / numToFire) + (360 / numToFire) * i));
