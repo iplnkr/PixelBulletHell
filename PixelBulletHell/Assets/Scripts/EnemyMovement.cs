@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private int phase = 3;//-1 = null, 0 = planning, 1 = moving, 2 = shooting, 3 = wait
+    private int phase = 4;//-1 = null, 0 = planning, 1 = moving, 2 = shooting, 3 = wait, 4 = spawning
     private Vector2 destination;
     private PlayerMovement player;
     private float moveSpeed = 0.15f;
@@ -23,13 +24,13 @@ public class EnemyMovement : MonoBehaviour
     {
         if (phase == 0)
         {
-            destination = player.transform.position + (4 * new Vector3(Random.Range(-1f, 1), Random.Range(-1f, 1), 0).normalized);
+            destination = player.transform.position + (5 * new Vector3(Random.Range(-1f, 1), Random.Range(-1f, 1), 0).normalized);
             transform.up = new Vector3(destination.x, destination.y, transform.position.z) - transform.position;
             phase = 1;
         }
         else if(phase == 1)
         {
-            if(Vector3.Distance(player.transform.position, transform.position) > 11)
+            if(Vector3.Distance(player.transform.position, transform.position) > 15)
             {
                 transform.position = Vector3.MoveTowards(transform.position, destination, moveSpeed * 10);
             }
@@ -52,6 +53,12 @@ public class EnemyMovement : MonoBehaviour
         {
             phase = -1;//null phase
             Invoke("RestartCycle", 1);
+        }
+        else if(phase == 4)
+        {
+            destination = transform.position + (-10 * (player.transform.position - transform.position).normalized);
+            transform.up = new Vector3(destination.x, destination.y, transform.position.z) - transform.position;
+            phase = 1;
         }
     }
 

@@ -184,7 +184,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &763896644
 Transform:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763896643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: 0, y: -0.045, z: -2}
   m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_Children: []
   m_Father: {fileID: 2057447902}
@@ -207,20 +207,20 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763896643}
-  m_Text: WASD / Arrows = Move
+  m_Text: By Imaad Phoplunker
   m_OffsetZ: 0
   m_CharacterSize: 0.05
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 128
+  m_FontSize: 96
   m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 452984831
 --- !u!23 &763896646
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -388,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986221733}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.025, z: -2}
+  m_LocalPosition: {x: 0, y: 0.015, z: -2}
   m_LocalScale: {x: 0.03, y: 0.03, z: 1}
   m_Children: []
   m_Father: {fileID: 2057447902}
@@ -402,10 +402,12 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986221733}
-  m_Text: Hummingbird
-  m_OffsetZ: 0
+  m_Text: 'Cosmic
+
+    Hummingbird'
+  m_OffsetZ: -0.21
   m_CharacterSize: 0.05
-  m_LineSpacing: 1
+  m_LineSpacing: 0.75
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
@@ -734,7 +736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793901365}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.035, z: -2}
+  m_LocalPosition: {x: 0, y: -0.03, z: -2}
   m_LocalScale: {x: 0.0075, y: 0.0075, z: 1}
   m_Children: []
   m_Father: {fileID: 2057447902}
@@ -814,7 +816,7 @@ GameObject:
   - component: {fileID: 2057447902}
   - component: {fileID: 2057447903}
   m_Layer: 0
-  m_Name: WinScreen
+  m_Name: MenuScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -879,7 +881,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 1}
+  m_Color: {r: 0.02745098, g: 0.02745098, b: 0.05490196, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

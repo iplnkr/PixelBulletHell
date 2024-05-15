@@ -6,7 +6,7 @@ using Cinemachine;
 public class PlayerMovement : MonoBehaviour
 {
     //map movement
-    private float moveSpeed = 300f;
+    private float moveSpeed = 350f;
     private Rigidbody2D rb;
     private Vector2 movement;
     private bool invince = false;
@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator InvincibilityFlash()
     {
-        perlinNoise.m_AmplitudeGain = 3;
+        perlinNoise.m_AmplitudeGain = 5;
         for(int i = 0; i < 12; i++)
         {
             birdImage.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1 - birdImage.GetComponent<SpriteRenderer>().color.a);

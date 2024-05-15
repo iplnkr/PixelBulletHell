@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580387829039914688}
   m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1730470644264332927}
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1683754703
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 9171400788297263276, guid: 75dc990333cdfbd429e064650fa24838, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccf4706a5e6c6641a528738e1d15dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thresholds: 420000002100000002000000
+  thresholds: 4200000021000000
   enemyTemplate: {fileID: 1730470644332428004}
   planet: {fileID: 1730470644264332915}
   bulletTemplate: {fileID: 5160555232208611834}
@@ -344,7 +344,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730470644264332915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.0284808, y: -2.1341243, z: 2}
+  m_LocalPosition: {x: 3.0284808, y: -2.1341243, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1912888905583786182}
@@ -610,7 +610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6409826196821578756, guid: 128f49f1554f2d747ad38386bf21329b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409826196821578756, guid: 128f49f1554f2d747ad38386bf21329b, type: 3}
       propertyPath: m_LocalRotation.w

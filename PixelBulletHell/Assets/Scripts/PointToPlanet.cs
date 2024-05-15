@@ -10,7 +10,7 @@ public class PointToPlanet : MonoBehaviour
         PlanetWater[] planets = FindObjectsOfType<PlanetWater>();
         if (planets.Length != 0)
         {
-            transform.up = GetClosestPlanet(planets).transform.position - new Vector3(transform.position.x, transform.position.y, 2);
+            transform.up = GetClosestPlanet(planets).transform.position - new Vector3(transform.position.x, transform.position.y, 0);
         }
     }
 

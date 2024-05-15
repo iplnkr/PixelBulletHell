@@ -14,7 +14,7 @@ public class RandomRotation : MonoBehaviour
     {
         if(spin)
         {
-            transform.Rotate(new Vector3(0, 1, 0));
+            transform.Rotate(new Vector3(0, 0.5f, 0));
         }
     }
 }

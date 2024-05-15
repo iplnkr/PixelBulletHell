@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private bool firing = true;
+    private bool firing = false;
     private float moveSpeed = 0.08125f;
 
     void FixedUpdate()
@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
             if(col.gameObject.GetComponent<PlayerMovement>() != null)
             {
                 col.gameObject.GetComponent<PlayerMovement>().TakeDamage();
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
         }
         //self destruct

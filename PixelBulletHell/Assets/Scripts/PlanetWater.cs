@@ -19,6 +19,8 @@ public class PlanetWater : MonoBehaviour
     [SerializeField] private GameObject wavesObject;
     [SerializeField] private GameObject explodeObject;
     [SerializeField] private Animator expAnim;
+    
+    [SerializeField] private bool fireOnExplode = true;
 
     // Start is called before the first frame update
     void Start()
@@ -40,10 +42,13 @@ public class PlanetWater : MonoBehaviour
             {
                 if(scalePercentage <= thresholds[i])
                 {
-                    thresholds[i] = -100;
-                    GameObject newEnemy = Instantiate(enemyTemplate);
-                    newEnemy.transform.position = new Vector3(transform.position.x, transform.position.y, -2);
-                    newEnemy.SetActive(true);
+                    if(enemyTemplate != null)
+                    {
+                        thresholds[i] = -100;
+                        GameObject newEnemy = Instantiate(enemyTemplate);
+                        newEnemy.transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+                        newEnemy.SetActive(true);
+                    }
                 }
             }
             if(transform.localScale.x <= 1.01)
@@ -67,13 +72,17 @@ public class PlanetWater : MonoBehaviour
 
     private IEnumerator Explode()//planet exploding animation
     {
+        planet.transform.parent = null;
         FindObjectOfType<PlanetCounter>().UpdateNumber();
         float numToFire = 6;
         yield return new WaitForSeconds(1f);
 
         //explode anim
         gameObject.GetComponent<MeshRenderer>().enabled = false;
-        wavesObject.GetComponent<MeshRenderer>().enabled = false;
+        if(wavesObject != null)
+        {
+            wavesObject.GetComponent<MeshRenderer>().enabled = false;
+        }
         core.GetComponent<MeshRenderer>().enabled = false;
         explodeObject.SetActive(true);
         if(expAnim != null)
@@ -85,49 +94,60 @@ public class PlanetWater : MonoBehaviour
             }
         }
 
-        //shoot bullets around
-        for(int i = 0; i < numToFire; i++)
+        //if firing
+        if(fireOnExplode)
         {
-            ShootBullet(Quaternion.Euler(0, 0, (0 * 120 / numToFire) + (360 / numToFire) * i));
+            //shoot bullets around
+            for(int i = 0; i < numToFire; i++)
+            {
+                ShootBullet(Quaternion.Euler(0, 0, (0 * 120 / numToFire) + (360 / numToFire) * i));
+            }
+            yield return new WaitForSeconds(0.15f);
+            for(int i = 0; i < numToFire; i++)
+            {
+                ShootBullet(Quaternion.Euler(0, 0, (2 * 120 / numToFire) + (360 / numToFire) * i));
+            }
+            yield return new WaitForSeconds(0.15f);
+            for(int i = 0; i < numToFire; i++)
+            {
+                ShootBullet(Quaternion.Euler(0, 0, (4 * 120 / numToFire) + (360 / numToFire) * i));
+            }
+            yield return new WaitForSeconds(0.15f);
+            for(int i = 0; i < numToFire; i++)
+            {
+                ShootBullet(Quaternion.Euler(0, 0, (0 * 120 / numToFire) + (360 / numToFire) * i));
+            }
+            yield return new WaitForSeconds(0.15f);
+            for(int i = 0; i < numToFire; i++)
+            {
+                ShootBullet(Quaternion.Euler(0, 0, (2 * 120 / numToFire) + (360 / numToFire) * i));
+            }
+            yield return new WaitForSeconds(0.15f);
+            for(int i = 0; i < numToFire; i++)
+            {
+                ShootBullet(Quaternion.Euler(0, 0, (4 * 120 / numToFire) + (360 / numToFire) * i));
+            }
         }
-        yield return new WaitForSeconds(0.15f);
-        for(int i = 0; i < numToFire; i++)
+        else
         {
-            ShootBullet(Quaternion.Euler(0, 0, (2 * 120 / numToFire) + (360 / numToFire) * i));
-        }
-        yield return new WaitForSeconds(0.15f);
-        for(int i = 0; i < numToFire; i++)
-        {
-            ShootBullet(Quaternion.Euler(0, 0, (4 * 120 / numToFire) + (360 / numToFire) * i));
-        }
-        yield return new WaitForSeconds(0.15f);
-        for(int i = 0; i < numToFire; i++)
-        {
-            ShootBullet(Quaternion.Euler(0, 0, (0 * 120 / numToFire) + (360 / numToFire) * i));
-        }
-        yield return new WaitForSeconds(0.15f);
-        for(int i = 0; i < numToFire; i++)
-        {
-            ShootBullet(Quaternion.Euler(0, 0, (2 * 120 / numToFire) + (360 / numToFire) * i));
-        }
-        yield return new WaitForSeconds(0.15f);
-        for(int i = 0; i < numToFire; i++)
-        {
-            ShootBullet(Quaternion.Euler(0, 0, (4 * 120 / numToFire) + (360 / numToFire) * i));
+            yield return new WaitForSeconds(0.75f);
         }
         Destroy(planet);
     }
 
     private void ShootBullet(Quaternion direction)
     {
-        GameObject newBullet = Instantiate(bulletTemplate);
-        newBullet.transform.position = transform.position;
-        newBullet.transform.rotation = direction;
-        newBullet.transform.localScale = bulletTemplate.transform.lossyScale;
-        newBullet.SetActive(true);
-        if(newBullet.GetComponent<Bullet>() != null)
+        if(bulletTemplate != null)
         {
-            newBullet.GetComponent<Bullet>().Shoot();
+            GameObject newBullet = Instantiate(bulletTemplate);
+            newBullet.transform.position = transform.position;
+            newBullet.transform.rotation = direction;
+            newBullet.transform.localScale = bulletTemplate.transform.lossyScale;
+            newBullet.SetActive(true);
+            if(newBullet.GetComponent<Bullet>() != null)
+            {
+                newBullet.GetComponent<Bullet>().Shoot();
+            }
         }
     }
 }
