@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class DrinkWater : MonoBehaviour
 {
+    [SerializeField] private AudioSource drinkSound;
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.CompareTag("Water"))
@@ -11,6 +13,7 @@ public class DrinkWater : MonoBehaviour
             if(col.gameObject.GetComponent<PlanetWater>() != null)
             {
                 col.gameObject.GetComponent<PlanetWater>().Drink();
+                drinkSound.Play();
             }
         }
     }
@@ -22,6 +25,7 @@ public class DrinkWater : MonoBehaviour
             if(col.gameObject.GetComponent<PlanetWater>() != null)
             {
                 col.gameObject.GetComponent<PlanetWater>().Undrink();
+                drinkSound.Stop();
             }
         }
     }

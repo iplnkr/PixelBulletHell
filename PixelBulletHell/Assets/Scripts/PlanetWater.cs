@@ -19,6 +19,7 @@ public class PlanetWater : MonoBehaviour
     [SerializeField] private GameObject wavesObject;
     [SerializeField] private GameObject explodeObject;
     [SerializeField] private Animator expAnim;
+    [SerializeField] private AudioSource explodeSound;
     
     [SerializeField] private bool fireOnExplode = true;
 
@@ -91,6 +92,10 @@ public class PlanetWater : MonoBehaviour
             {
                 //core.SetActive(false);
                 expAnim.Play("Base Layer.ExplodeAnim");
+                if(explodeSound != null)
+                {
+                    explodeSound.Play();
+                }
             }
         }
 

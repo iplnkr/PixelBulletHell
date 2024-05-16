@@ -10,6 +10,7 @@ public class EnemyMovement : MonoBehaviour
     private PlayerMovement player;
     private float moveSpeed = 0.15f;
     [SerializeField] private GameObject bulletTemplate;
+    [SerializeField] private AudioSource shootSound;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +47,7 @@ public class EnemyMovement : MonoBehaviour
         else if(phase == 2)
         {
             transform.up = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z) - transform.position;
+            shootSound.Play();
             ShootBullet();
             phase = 3;
         }
